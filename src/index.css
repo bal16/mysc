@@ -1,5 +1,0 @@
-@import 'tailwindcss';
-
-body {
-  @apply bg-slate-900 text-slate-50 flex items-center justify-center w-screen h-screen;
-}
