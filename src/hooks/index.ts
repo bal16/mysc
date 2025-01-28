@@ -1,1 +1,1 @@
-export * from './useScore'
+export * from './useScoreContext'

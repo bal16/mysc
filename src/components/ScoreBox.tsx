@@ -1,20 +1,21 @@
-import { useScore } from "@/hooks";
+import { ScoreContext } from "@/hooks";
 import { DeButton, Odometer } from "@/components";
+import { Team } from "@/types";
+import { useContext } from "react";
 
 interface ScoreBoxProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: "A" | "B";
+  name: Team;
 }
 
 export const ScoreBox = ({ name }: ScoreBoxProps) => {
-  const { value, increase, decrease } = useScore(name);
+  const { scores, increment, decrement } = useContext(ScoreContext);
 
   return (
-    <div className="w-full h-full flex items-center justify-center rotate-90 md:rotate-0">
-      <div onClick={increase} className="">
-        <Odometer value={value} digit={1} />
+    <div className="w-full h-full flex items-center justify-center rotate-90 lg:rotate-0 relative">
+      <div onClick={() => increment(name)}>
+        <Odometer value={scores[name]} digit={1} />
       </div>
-      {/* {value} */}
-      <DeButton onClick={decrease} />
+      <DeButton onClick={() => decrement(name)} value={scores["step"]} />
     </div>
   );
 };

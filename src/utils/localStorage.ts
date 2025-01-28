@@ -1,4 +1,4 @@
-import { Score } from "@/types";
+import { Score, Team } from "@/types";
 
 /**
  * Retrieves the score from local storage.
@@ -11,9 +11,16 @@ import { Score } from "@/types";
 export const getLocalScore = () => {
   const localAString = localStorage.getItem("A");
   const localBString = localStorage.getItem("B");
+  const localStepString = localStorage.getItem("step");
   const local = {
     A: localAString ? Number(localAString) : 0,
     B: localBString ? Number(localBString) : 0,
+    step: localStepString ? Number(localStepString) : 1,
   } as Score;
   return local;
 };
+
+export const setLocalScore = (key: Team, value: number) =>
+  localStorage.setItem(key, String(value));
+
+export const removeLocalScore = (key: Team) => localStorage.removeItem(key);
