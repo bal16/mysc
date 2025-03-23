@@ -1,2 +1,2 @@
-export * from "./MainPage";
+// export * from "../components/MainLayout";
 export * from "./SettingsPage";

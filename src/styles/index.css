@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
-
-
-
+@theme {
+  --color-primary: #0099f9;
+  --color-secondary: #6c9efb;
+  --color-foreground: #000;
+  --color-background: #fff;
+  --font-sans: "Jaro", sans-serif;
+}

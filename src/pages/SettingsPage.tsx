@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+// import { a } from "react-router";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { BiCopyright, BiReset } from "react-icons/bi";
 import {
@@ -19,7 +19,7 @@ export const SettingsPage = () => {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
-      <Link to={"/"} className="w-screen h-screen backdrop-blur-md block" />
+      <a href={"/"} className="w-screen h-screen backdrop-blur-md block" />
       <article className="rounded-xl border-2 border-slate-700 bg-slate-800 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 flex flex-col justify-between">
         <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
           <div className="w-full">
@@ -79,17 +79,17 @@ export const SettingsPage = () => {
         </div>
 
         <div className="flex justify-between">
-          <Link to={"/"} className="flex justify-start">
+          <a href={"/"} className="flex justify-start">
             <strong className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-es-xl rounded-se-xl bg-green-600 px-3 py-1.5 text-white text-xs">
               Copyright 2025 <BiCopyright /> MYSC App
             </strong>
-          </Link>
-          <Link to={"/"} className="flex justify-end">
+          </a>
+          <a href={"/"} className="flex justify-end">
             <strong className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-red-600 px-3 py-1.5 text-white">
               <IoCloseCircleOutline />
               {/* <span className="text-[10px] font-medium sm:text-xs">Close</span> */}
             </strong>
-          </Link>
+          </a>
         </div>
       </article>
       <SlideButton target="/" className="bg-red-600 px-3 py-1.5 text-white">

@@ -35,7 +35,7 @@ export const Odometer = ({ value, digit }: Props) => {
   const digits = String(value).padStart(digit!, "0").split("").map(Number);
 
   return (
-    <div className="w-full px-4 flex justify-center text-right text-8xl md:text-[14rem] font-[inter]">
+    <div className="w-full px-4 flex justify-center text-right text-8xl md:text-[14rem]">
       {digits.map((digit, i) => (
         <Digit key={i} value={digit} />
       ))}
