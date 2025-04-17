@@ -1,2 +1,1 @@
-export * from "./AppProvider";
-export * from "./ScoreContextProvider";
+export * from './ScoreContextProvider';

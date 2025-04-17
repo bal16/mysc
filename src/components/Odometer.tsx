@@ -13,7 +13,7 @@ const Digit = ({ value }: Props) => {
   }, [value]);
 
   return (
-    <div className=" mb-3 overflow-hidden h-[1em]  relative ">
+    <div className="overflow-hidden h-[1em]  relative ">
       <div
         className="relative transition-all duration-500 ease-in-out"
         style={{ top: `-${value}em` }}
@@ -35,7 +35,7 @@ export const Odometer = ({ value, digit }: Props) => {
   const digits = String(value).padStart(digit!, "0").split("").map(Number);
 
   return (
-    <div className="w-full px-4 flex justify-center text-right text-8xl md:text-[14rem]">
+    <div className="w-full flex justify-center text-right text-8xl lg:text-[12rem] ">
       {digits.map((digit, i) => (
         <Digit key={i} value={digit} />
       ))}
