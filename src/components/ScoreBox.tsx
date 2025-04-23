@@ -9,25 +9,29 @@ interface ScoreBoxProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ScoreBoxHeader = ({ variant: name }: ScoreBoxProps) => {
+  const { decrement } = useContext(ScoreContext);
+
+  const handleDecrement = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation(); // prevent increment handler call
+    decrement(name);
+  };
   return (
-    <span className="text-8xl lg:text-[12rem] flex items-center justify-center select-none">
+    <span
+      className="text-8xl lg:text-[12rem] flex items-center justify-center select-none"
+      onClick={handleDecrement}
+    >
       {name}
     </span>
   );
 };
 
 export const ScoreBox = ({ variant: name }: ScoreBoxProps) => {
-  const { scores, increment, decrement } = useContext(ScoreContext);
+  const { scores, increment } = useContext(ScoreContext);
 
   const handleIncrement = (e: React.MouseEvent) => {
     e.preventDefault();
     increment(name);
-  };
-
-  const handleDecrement = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation(); // prevent increment handler call
-    decrement(name);
   };
 
   return (
@@ -52,7 +56,6 @@ export const ScoreBox = ({ variant: name }: ScoreBoxProps) => {
             name === "A" && "pl-10 rounded-l-full",
             name === "B" && "pr-10 rounded-r-full"
           )}
-          onClick={handleDecrement}
         >
           {name == "A" && <ScoreBoxHeader variant={name} />}
           <div className="min-w-24 lg:min-w-48">
