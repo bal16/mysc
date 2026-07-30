@@ -1,4 +1,4 @@
-import { Score, Team } from "@/types";
+import { Score } from "@/types";
 
 /**
  * Retrieves the score from local storage.
@@ -19,7 +19,7 @@ export const getLocalScore = () => {
   } as Score;
 };
 
-export const setLocalScore = (key: Team, value: number) =>
+export const setLocalScore = (key: keyof Score, value: number) =>
   localStorage.setItem(key, String(value));
 
-export const removeLocalScore = (key: Team) => localStorage.removeItem(key);
+export const removeLocalScore = (key: keyof Score) => localStorage.removeItem(key);

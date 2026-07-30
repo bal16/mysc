@@ -1,58 +1,49 @@
 import { ScoreContext } from "@/hooks";
 import { Score, Team } from "@/types";
 import { getLocalScore, removeLocalScore, setLocalScore } from "@/utils";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useReducer, type ReactNode, type FC } from "react";
+import { scoreReducer, defaultScore } from "@/models/scoreModel";
 
 type ScoreProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-export const ScoreProvider: React.FC<ScoreProviderProps> = ({ children }) => {
-  const defScores = useMemo(() => ({ A: 0, B: 0, step: 1 }), []);
-  const [scores, setScores] = useState<Score>(defScores);
+export const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
+  const [scores, dispatch] = useReducer(scoreReducer, defaultScore);
 
   useEffect(() => {
     const local = getLocalScore();
-    if (local) setScores(local);
+    if (local) {
+      dispatch({ type: "SET", key: "A", value: local.A });
+      dispatch({ type: "SET", key: "B", value: local.B });
+      dispatch({ type: "SET", key: "step", value: local.step });
+    }
   }, []);
 
   useEffect(() => {
-    if (scores == defScores) return;
+    if (scores === defaultScore) return;
     setLocalScore("A", scores.A);
     setLocalScore("B", scores.B);
     setLocalScore("step", scores.step);
-  }, [scores, defScores]);
-
-  const update = (team: Team, delta: number) => {
-    if (!scores) return;
-    setScores((prevScores) => ({
-      ...prevScores,
-      [team]: prevScores[team] + delta,
-    }));
-  };
+  }, [scores]);
 
   const increment = (team: Team) => {
-    if (scores[team] >= 100) return;
-    if (scores[team] + scores.step >= 100) return;
-    update(team, scores.step);
+    dispatch({ type: "INCREMENT", team });
   };
 
   const decrement = (team: Team) => {
-    if (scores[team] <= 0) return;
-    if (scores[team] - scores.step < 0) return;
-    update(team, -scores.step);
+    dispatch({ type: "DECREMENT", team });
   };
 
   const reset = () => {
-    setScores({ A: 0, B: 0, step: 1 });
+    dispatch({ type: "RESET" });
     removeLocalScore("A");
     removeLocalScore("B");
     removeLocalScore("step");
   };
 
-  const set = (team: Team, value: number) => {
-    setScores((prev) => ({ ...prev, [team]: value }));
-    setLocalScore(team, value);
+  const set = (key: keyof Score, value: number) => {
+    dispatch({ type: "SET", key, value });
   };
 
   return (
