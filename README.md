@@ -1,50 +1,78 @@
-# React + TypeScript + Vite
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/header/gradient.svg?title=mysc&subtitle=A+fast,+simple+score+counter+for+badminton+and+short+games.&logo=react&mode=dark&theme=zinc" />
+    <img alt="mysc" src="https://shieldcn.dev/header/gradient.svg?title=mysc&subtitle=A+fast,+simple+score+counter+for+badminton+and+short+games.&logo=react&mode=light&theme=zinc" />
+  </picture>
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <a href="https://github.com/bal16/mysc/stargazers">
+    <img src="https://shieldcn.dev/github/stars/bal16/mysc.svg?variant=secondary" alt="GitHub stars" />
+  </a>
+  <a href="https://github.com/bal16/mysc/commits/main">
+    <img src="https://shieldcn.dev/github/last-commit/bal16/mysc.svg?variant=secondary" alt="Last commit" />
+  </a>
+  <a href="https://react.dev">
+    <img src="https://shieldcn.dev/badge/Built%20with-React-149eca.svg?variant=branded&logo=react&logoColor=149eca&color=0d1117" alt="React" />
+  </a>
+  <a href="https://github.com/bal16/mysc/blob/main/LICENSE.md">
+    <img src="https://shieldcn.dev/github/license/bal16/mysc.svg?variant=secondary" alt="License" />
+  </a>
+</p>
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`mysc` is a fast, simple score counter application tailored for badminton and other short games. Built with React, Vite, and TailwindCSS, it provides a clean and responsive interface for tracking scores on the go.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Simple Interface**: Intuitive design for quick score updates during fast-paced games.
+- **Responsive**: Works perfectly on mobile and desktop browsers.
+- **Modern Tech Stack**: Powered by React, Vite, and TailwindCSS for a fast and smooth user experience.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+- Node.js (v18 or newer recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/bal16/mysc.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd mysc
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   # or yarn install
+   ```
+
+### Running Locally
+
+Start the development server:
+
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Open `http://localhost:5173` in your browser to see the app in action.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Building for Production
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+To build the app for production, run:
+
+```bash
+npm run build
 ```
+
+This will generate an optimized build in the `dist` directory.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
