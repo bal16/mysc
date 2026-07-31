@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/header/gradient.svg?title=mysc&subtitle=A+fast,+simple+score+counter+for+badminton+and+short+games.&logo=react&mode=dark&theme=zinc" />
-    <img alt="mysc" src="https://shieldcn.dev/header/gradient.svg?title=mysc&subtitle=A+fast,+simple+score+counter+for+badminton+and+short+games.&logo=react&mode=light&theme=zinc" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/header/gradient.svg?title=mysc&subtitle=A%20fast%2C%20simple%20score%20counter%20for%20badminton%20and%20short%20games.&logo=react&mode=dark&theme=zinc" />
+    <img alt="mysc" src="https://shieldcn.dev/header/gradient.svg?title=mysc&subtitle=A%20fast%2C%20simple%20score%20counter%20for%20badminton%20and%20short%20games.&logo=react&mode=light&theme=zinc" />
   </picture>
 </p>
 
