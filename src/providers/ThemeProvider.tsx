@@ -8,6 +8,20 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function updateMetaTag(name: string, content: string) {
+  let meta = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("name", name);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", content);
+}
+
+function getCssVar(name: string): string {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
     try {
@@ -25,6 +39,12 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const html = document.documentElement;
     html.classList.remove("theme-origin", "theme-amoled", "theme-premium-warm");
     html.classList.add(`theme-${theme}`);
+
+    // Read colors from CSS variables (single source of truth)
+    // Class must be applied first before reading computed style
+    updateMetaTag("theme-color", getCssVar("--primary"));
+    updateMetaTag("background-color", getCssVar("--bg"));
+
     try {
       localStorage.setItem("theme", theme);
     } catch (e) {

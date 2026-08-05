@@ -43,11 +43,14 @@ export default {
         type: "image/png",
       },
     ],
-    theme_color: "#0099f9",
-    background_color: "#fff",
+    // theme_color & background_color are static defaults (used for install splash screen).
+    // Runtime values are updated dynamically via <meta> tags in ThemeProvider.
+    theme_color: "#1DA1F2",
+    background_color: "#FDF6E3",
     display: "standalone",
     scope: "/",
     start_url: "/",
     orientation: "landscape",
+    categories: ["games"]
   },
 } as Partial<VitePWAOptions>;
