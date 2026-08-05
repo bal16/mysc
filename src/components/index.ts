@@ -5,3 +5,6 @@ export * from "./ScoreBox";
 export * from "./SettingsSelectOption";
 export * from "./SlideButton";
 export * from "./ThemeSwitcher";
+export * from "./SettingsNumberInput";
+export * from "./SettingsFAB";
+export * from "./SettingsModal";
