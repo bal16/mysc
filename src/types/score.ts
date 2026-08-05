@@ -6,8 +6,8 @@ export type Score = {
 };
 export interface IScoreContext {
   state: Score;
-  increment: (team: Team) => void;
-  decrement: (team: Team) => void;
+  increase: (team: Team) => void;
+  decrease: (team: Team) => void;
   set: (key: keyof Score, value: number) => void;
   reset: () => void;
   swap: () => void;
