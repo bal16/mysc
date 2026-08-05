@@ -3,8 +3,8 @@ import { createContext } from "react";
 
 const defaultValues: IScoreContext = {
   state: { A: 0, B: 0, step: 1, isSwapped: false },
-  increment: () => {},
-  decrement: () => {},
+  increase: () => {},
+  decrease: () => {},
   reset: () => {},
   set: () => {},
   swap: () => {},
