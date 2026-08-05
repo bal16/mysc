@@ -8,7 +8,7 @@ import { Score } from "@/types";
  *
  * @returns The current score.
  */
-export const getLocalScore = () => {
+export const getLocalScore = (): Score => {
   const localAString = localStorage.getItem("A");
   const localBString = localStorage.getItem("B");
   const localStepString = localStorage.getItem("step");
@@ -17,8 +17,9 @@ export const getLocalScore = () => {
     A: localAString ? Number(localAString) : 0,
     B: localBString ? Number(localBString) : 0,
     step: localStepString ? Number(localStepString) : 1,
-    isSwapped: localIsSwappedString ? Boolean(localIsSwappedString) : false,
-  } as Score;
+    isSwapped:
+      localIsSwappedString == "false" ? false : localIsSwappedString == "true",
+  };
 };
 
 export const setLocalScore = (key: keyof Score, value: Score[keyof Score]) =>
