@@ -27,7 +27,7 @@ const ScoreBoxHeader = ({ variant: name }: ScoreBoxProps) => {
 };
 
 export const ScoreBox = ({ variant: name }: ScoreBoxProps) => {
-  const { scores, increment } = useContext(ScoreContext);
+  const { state, increment } = useContext(ScoreContext);
 
   const handleIncrement = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -39,27 +39,29 @@ export const ScoreBox = ({ variant: name }: ScoreBoxProps) => {
       className={clsx(
         "w-full h-full",
         name === "B" && "bg-score-canvas-b",
-        name === "A" && "bg-score-canvas-a"
+        name === "A" && "bg-score-canvas-a",
       )}
     >
       <div
         className={clsx(
           "relative flex items-center px-10 w-full h-full portrait:rotate-90 landscape:lg:rotate-0",
           name === "A" && "justify-end",
-          name === "B" && "justify-start"
+          name === "B" && "justify-start",
         )}
         onClick={handleIncrement}
       >
         <div
           className={clsx(
             "flex p-10 gap-10 shadow-2xl",
-            name === "A" && "pl-10 rounded-l-full bg-score-pill-a text-score-pill-text-a",
-            name === "B" && "pr-10 rounded-r-full bg-score-pill-b text-score-pill-text-b"
+            name === "A" &&
+              "pl-10 rounded-l-full bg-score-pill-a text-score-pill-text-a",
+            name === "B" &&
+              "pr-10 rounded-r-full bg-score-pill-b text-score-pill-text-b",
           )}
         >
           {name == "A" && <ScoreBoxHeader variant={name} />}
           <div className="min-w-24 lg:min-w-48">
-            <Odometer value={scores[name]} digit={1} />
+            <Odometer value={state[name]} digit={1} />
           </div>
           {name == "B" && <ScoreBoxHeader variant={name} />}
         </div>
