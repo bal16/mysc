@@ -1,9 +1,14 @@
 import { useContext, useMemo } from "react";
 import { ScoreBox } from "@/components";
+import { SettingsFAB } from "./SettingsFAB";
 import { ScoreContext } from "@/hooks";
 import type { Team } from "@/types";
 
-export const MainLayout = () => {
+interface MainLayoutProps {
+  onOpenSettings: () => void;
+}
+
+export const MainLayout = ({ onOpenSettings }: MainLayoutProps) => {
   const { state, increase, decrease } = useContext(ScoreContext);
 
   const teams = useMemo(() => {
@@ -28,6 +33,7 @@ export const MainLayout = () => {
 
   return (
     <div className="relative flex h-full w-full font-brand portrait:flex-col landscape:flex-row">
+      <SettingsFAB onClick={onOpenSettings} />
       {teams.map((team) => (
         <ScoreBox
           key={team.id}

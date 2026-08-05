@@ -1,7 +1,7 @@
 import { ScoreContext } from "@/hooks";
 import { Score, Team } from "@/types";
 import { getLocalScore, removeLocalScore, setLocalScore } from "@/utils";
-import { useEffect, useReducer, type ReactNode, type FC } from "react";
+import { useEffect, useReducer, useMemo, type ReactNode, type FC } from "react";
 import { scoreReducer, defaultState } from "@/models/scoreModel";
 
 type ScoreProviderProps = {
@@ -56,17 +56,20 @@ export const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
     dispatch({ type: "SWAP" });
   };
 
+  const contextValue = useMemo(
+    () => ({
+      state,
+      increase,
+      decrease,
+      reset,
+      set,
+      swap,
+    }),
+    [state]
+  );
+
   return (
-    <ScoreContext.Provider
-      value={{
-        state,
-        increase,
-        decrease,
-        reset,
-        set,
-        swap,
-      }}
-    >
+    <ScoreContext.Provider value={contextValue}>
       {children}
     </ScoreContext.Provider>
   );
