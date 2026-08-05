@@ -1,69 +1,82 @@
-import { ScoreContext } from "@/hooks";
 import { Odometer } from "@/components";
 import { Team } from "@/types";
-import { useContext } from "react";
 import clsx from "clsx";
 
 interface ScoreBoxProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant: Team;
+  variant: "R" | "L";
+  label: Team;
+  value: number;
+  increaseFn: (label: Team) => void;
+  decreaseFn: (label: Team) => void;
 }
 
-const ScoreBoxHeader = ({ variant: name }: ScoreBoxProps) => {
-  const { decrement } = useContext(ScoreContext);
+type ScoreBoxLabelProps = Omit<
+  ScoreBoxProps,
+  "variant" | "value" | "increaseFn"
+>;
 
+const ScoreBoxLabel = ({ label, decreaseFn }: ScoreBoxLabelProps) => {
   const handleDecrement = (e: React.MouseEvent) => {
     e.preventDefault();
-    e.stopPropagation(); // prevent increment handler call
-    decrement(name);
+    e.stopPropagation();
+    decreaseFn(label);
   };
   return (
     <span
       className="text-8xl lg:text-[12rem] flex items-center justify-center select-none"
       onClick={handleDecrement}
     >
-      {name}
+      {label}
     </span>
   );
 };
 
-export const ScoreBox = ({ variant: name }: ScoreBoxProps) => {
-  const { state, increment } = useContext(ScoreContext);
-
+export const ScoreBox = ({
+  variant,
+  label,
+  value: state,
+  increaseFn,
+  decreaseFn,
+}: ScoreBoxProps) => {
   const handleIncrement = (e: React.MouseEvent) => {
     e.preventDefault();
-    increment(name);
+    increaseFn(label);
   };
 
   return (
     <section
       className={clsx(
         "w-full h-full",
-        name === "B" && "bg-score-canvas-b",
-        name === "A" && "bg-score-canvas-a",
+        label === "B" && "bg-score-canvas-b",
+        label === "A" && "bg-score-canvas-a",
       )}
     >
       <div
         className={clsx(
           "relative flex items-center px-10 w-full h-full portrait:rotate-90 landscape:lg:rotate-0",
-          name === "A" && "justify-end",
-          name === "B" && "justify-start",
+          variant === "L" && "justify-end",
+          variant === "R" && "justify-start",
         )}
         onClick={handleIncrement}
       >
         <div
           className={clsx(
             "flex p-10 gap-10 shadow-2xl",
-            name === "A" &&
+            variant === "L" &&
               "pl-10 rounded-l-full bg-score-pill-a text-score-pill-text-a",
-            name === "B" &&
+            variant === "R" &&
               "pr-10 rounded-r-full bg-score-pill-b text-score-pill-text-b",
           )}
         >
-          {name == "A" && <ScoreBoxHeader variant={name} />}
+          {variant == "L" && (
+            <ScoreBoxLabel label={label} decreaseFn={decreaseFn} />
+          )}
           <div className="min-w-24 lg:min-w-48">
-            <Odometer value={state[name]} digit={1} />
+            <Odometer value={state} digit={1} />
           </div>
-          {name == "B" && <ScoreBoxHeader variant={name} />}
+          {variant == "R" && (
+            <ScoreBoxLabel label={label} decreaseFn={decreaseFn} />
+          )}
         </div>
       </div>
     </section>
