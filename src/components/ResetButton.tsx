@@ -7,7 +7,7 @@ export const ResetButton = () => {
   const { reset } = useContext(ScoreContext);
 
   return (
-    <SlideButton onClick={reset} className="bg-white">
+    <SlideButton onClick={reset} className="bg-surface">
       <RiResetLeftLine />
     </SlideButton>
   );
