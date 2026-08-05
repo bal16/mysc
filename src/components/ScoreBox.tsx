@@ -38,8 +38,8 @@ export const ScoreBox = ({ variant: name }: ScoreBoxProps) => {
     <section
       className={clsx(
         "w-full h-full",
-        name === "B" && "bg-primary",
-        name === "A" && "bg-secondary"
+        name === "B" && "bg-score-canvas-b",
+        name === "A" && "bg-score-canvas-a"
       )}
     >
       <div
@@ -52,9 +52,9 @@ export const ScoreBox = ({ variant: name }: ScoreBoxProps) => {
       >
         <div
           className={clsx(
-            "flex bg-white p-10 gap-10 shadow-2xl",
-            name === "A" && "pl-10 rounded-l-full",
-            name === "B" && "pr-10 rounded-r-full"
+            "flex p-10 gap-10 shadow-2xl",
+            name === "A" && "pl-10 rounded-l-full bg-score-pill-a text-score-pill-text-a",
+            name === "B" && "pr-10 rounded-r-full bg-score-pill-b text-score-pill-text-b"
           )}
         >
           {name == "A" && <ScoreBoxHeader variant={name} />}
