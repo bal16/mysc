@@ -8,13 +8,88 @@
 }
 
 @theme {
-  --color-primary: #0099f9;
-  --color-secondary: #6c9efb;
-  --color-foreground: #000;
-  --color-background: #fff;
+  --color-team-a: var(--team-a);
+  --color-team-b: var(--team-b);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-foreground: var(--fg);
+  --color-border: var(--border);
+
+  --color-score-canvas-a: var(--score-canvas-a);
+  --color-score-canvas-b: var(--score-canvas-b);
+  --color-score-pill-a: var(--score-pill-a);
+  --color-score-pill-b: var(--score-pill-b);
+  --color-score-pill-text-a: var(--score-pill-text-a);
+  --color-score-pill-text-b: var(--score-pill-text-b);
+
   --font-brand: "Jaro", sans-serif;
+}
+
+@layer base {
+
+  :root,
+  .theme-origin {
+    --team-a: #1DA1F2;
+    --team-b: #3B82F6;
+    --primary: #1DA1F2;
+    --secondary: #3B82F6;
+    --bg: #FDF6E3;
+    --surface: #F7EBD7;
+    --fg: #2F241B;
+    --border: #D8C2A4;
+
+    /* Layout Mapping: Colored Screen, Surface Pill, Dark Text */
+    --score-canvas-a: var(--team-a);
+    --score-canvas-b: var(--team-b);
+    --score-pill-a: var(--surface);
+    --score-pill-b: var(--surface);
+    --score-pill-text-a: var(--fg);
+    --score-pill-text-b: var(--fg);
+  }
+
+  .theme-amoled {
+    --team-a: #1DA1F2;
+    --team-b: #3B82F6;
+    --primary: #1DA1F2;
+    --secondary: #3B82F6;
+    --bg: #000000;
+    --surface: #111111;
+    --fg: #FFFFFF;
+    --border: #1F1F1F;
+
+    /* Layout Mapping: Black Screen, Dark Pill, Neon Text */
+    --score-canvas-a: var(--bg);
+    --score-canvas-b: var(--bg);
+    --score-pill-a: var(--surface);
+    --score-pill-b: var(--surface);
+    --score-pill-text-a: var(--team-a);
+    --score-pill-text-b: var(--team-b);
+  }
+
+  .theme-premium-warm {
+    --team-a: #A15D2B;
+    --team-b: #C98A4A;
+    --primary: #A15D2B;
+    --secondary: #C98A4A;
+    --bg: #F5EBDD;
+    --surface: #EFE0C9;
+    --fg: #2F241B;
+    --border: #D4B28A;
+
+    /* Layout Mapping: Colored Screen, Surface Pill, Dark Text */
+    --score-canvas-a: var(--team-a);
+    --score-canvas-b: var(--team-b);
+    --score-pill-a: var(--surface);
+    --score-pill-b: var(--surface);
+    --score-pill-text-a: var(--fg);
+    --score-pill-text-b: var(--fg);
+  }
 }
 
 body {
   font-family: var(--font-brand);
+  background-color: var(--bg);
+  color: var(--fg);
 }
