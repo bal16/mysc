@@ -2,7 +2,11 @@ import { VitePWAOptions } from "vite-plugin-pwa";
 
 export default {
   registerType: "prompt",
-  includeAssets: ["favicon.ico", "apple-touch-icon.png"],
+  includeAssets: [
+    "favicon.ico",
+    "apple-touch-icon.png",
+    "Jaro/Jaro-Regular-VariableFont_opsz.ttf",
+  ],
   manifest: {
     name: "Peteika-mysc",
     short_name: "mysc-app",

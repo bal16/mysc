@@ -1,9 +1,20 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Jaro";
+  src: url("/Jaro/Jaro-Regular-VariableFont_opsz.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
 @theme {
   --color-primary: #0099f9;
   --color-secondary: #6c9efb;
   --color-foreground: #000;
   --color-background: #fff;
-  --font-sans: "Jaro", sans-serif;
+  --font-brand: "Jaro", sans-serif;
+}
+
+body {
+  font-family: var(--font-brand);
 }
