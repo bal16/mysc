@@ -3,10 +3,11 @@ import { Score, Team } from "../types";
 export type ScoreAction =
   | { type: "INCREMENT"; team: Team }
   | { type: "DECREMENT"; team: Team }
-  | { type: "SET"; key: keyof Score; value: number }
-  | { type: "RESET" };
+  | { type: "SET"; key: keyof Score; value: Score[keyof Score] }
+  | { type: "RESET" }
+  | { type: "SWAP" };
 
-export const defaultScore: Score = { A: 0, B: 0, step: 1 };
+export const defaultState: Score = { A: 0, B: 0, step: 1, isSwapped: false };
 
 export function scoreReducer(state: Score, action: ScoreAction): Score {
   switch (action.type) {
@@ -26,7 +27,10 @@ export function scoreReducer(state: Score, action: ScoreAction): Score {
       return { ...state, [action.key]: action.value };
     }
     case "RESET": {
-      return defaultScore;
+      return defaultState;
+    }
+    case "SWAP": {
+      return { ...state, isSwapped: !state.isSwapped };
     }
     default:
       return state;
