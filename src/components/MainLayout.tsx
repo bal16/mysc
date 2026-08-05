@@ -32,7 +32,7 @@ export const MainLayout = ({ onOpenSettings }: MainLayoutProps) => {
   }, [state.isSwapped, state.A, state.B]);
 
   return (
-    <div className="relative flex h-full w-full font-brand portrait:flex-col landscape:flex-row">
+    <main className="relative flex h-full w-full font-brand portrait:flex-col landscape:flex-row">
       <SettingsFAB onClick={onOpenSettings} />
       {teams.map((team) => (
         <ScoreBox
@@ -44,6 +44,6 @@ export const MainLayout = ({ onOpenSettings }: MainLayoutProps) => {
           decreaseFn={() => decrease(team.id)}
         />
       ))}
-    </div>
+    </main>
   );
 };

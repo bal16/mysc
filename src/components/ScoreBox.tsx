@@ -22,12 +22,13 @@ const ScoreBoxLabel = ({ label, decreaseFn }: ScoreBoxLabelProps) => {
     decreaseFn(label);
   };
   return (
-    <span
-      className="text-8xl lg:text-[12rem] flex items-center justify-center select-none"
+    <button
+      className="text-8xl lg:text-[12rem] flex items-center justify-center select-none cursor-pointer bg-transparent border-0 p-0 font-brand"
       onClick={handleDecrement}
+      aria-label={`Decrease Team ${label} score`}
     >
       {label}
-    </span>
+    </button>
   );
 };
 
