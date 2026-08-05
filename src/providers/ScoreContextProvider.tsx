@@ -33,11 +33,11 @@ export const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
     [state],
   );
 
-  const increment = (team: Team) => {
+  const increase = (team: Team) => {
     dispatch({ type: "INCREMENT", team });
   };
 
-  const decrement = (team: Team) => {
+  const decrease = (team: Team) => {
     dispatch({ type: "DECREMENT", team });
   };
 
@@ -58,7 +58,14 @@ export const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
 
   return (
     <ScoreContext.Provider
-      value={{ state: state, increment, decrement, reset, set, swap }}
+      value={{
+        state,
+        increase,
+        decrease,
+        reset,
+        set,
+        swap,
+      }}
     >
       {children}
     </ScoreContext.Provider>
