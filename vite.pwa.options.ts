@@ -8,8 +8,8 @@ export default {
     "Jaro/Jaro-Regular-VariableFont_opsz.ttf",
   ],
   manifest: {
-    name: "Peteika-mysc",
-    short_name: "mysc-app",
+    name: "mysc. myscore",
+    short_name: "mysc.",
     description: "Simple score counting app",
     icons: [
       {
@@ -51,6 +51,6 @@ export default {
     scope: "/",
     start_url: "/",
     orientation: "landscape",
-    categories: ["games"]
+    categories: ["games"],
   },
 } as Partial<VitePWAOptions>;
