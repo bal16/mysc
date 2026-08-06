@@ -2,15 +2,21 @@ import { useContext, useEffect } from "react";
 import { ScoreContext } from "@/hooks";
 import { SettingsNumberInput } from "./SettingsNumberInput";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { WakeLockToggle } from "./WakeLockToggle";
 import { RiCloseLine, RiArrowLeftRightLine } from "react-icons/ri";
 import { clsx } from "clsx";
 
 interface SettingsModalProps {
   isOpen: boolean;
   onClose: () => void;
+  wakeLock?: {
+    isSupported: boolean;
+    isEnabled: boolean;
+    toggle: () => void;
+  };
 }
 
-export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
+export const SettingsModal = ({ isOpen, onClose, wakeLock }: SettingsModalProps) => {
   const { state, set, swap } = useContext(ScoreContext);
 
   // Prevent scrolling on body when modal is open
@@ -112,8 +118,20 @@ export const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
 
           {/* Theme Settings */}
           <ThemeSwitcher />
+
+          {wakeLock && wakeLock.isSupported && (
+            <>
+              <div className="w-full h-px bg-border/40" />
+              <WakeLockToggle
+                isSupported={wakeLock.isSupported}
+                isEnabled={wakeLock.isEnabled}
+                onToggle={wakeLock.toggle}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>
   );
 };
+
