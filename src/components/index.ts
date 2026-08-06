@@ -10,3 +10,4 @@ export * from "./SettingsFAB";
 export * from "./SettingsModal";
 export * from "./WakeLockIndicator";
 export * from "./WakeLockToggle";
+export * from "./HapticsToggle";

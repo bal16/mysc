@@ -5,12 +5,13 @@ import {
   WakeLockIndicator,
 } from "@/components";
 import { ScoreProvider } from "@/providers";
-import { useWakeLock } from "@/hooks";
+import { useWakeLock, useHaptics } from "@/hooks";
 import { useState } from "react";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const wakeLock = useWakeLock();
+  const haptics = useHaptics();
 
   return (
     <div className="relative h-screen overflow-hidden w-screen text-foreground">
@@ -22,6 +23,7 @@ function App() {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           wakeLock={wakeLock}
+          haptics={haptics}
         />
       </ScoreProvider>
     </div>
