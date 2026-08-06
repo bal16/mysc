@@ -3,6 +3,7 @@ import { ScoreContext } from "@/hooks";
 import { SettingsNumberInput } from "./SettingsNumberInput";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { WakeLockToggle } from "./WakeLockToggle";
+import { HapticsToggle } from "./HapticsToggle";
 import { RiCloseLine, RiArrowLeftRightLine } from "react-icons/ri";
 import { clsx } from "clsx";
 
@@ -14,12 +15,18 @@ interface SettingsModalProps {
     isEnabled: boolean;
     toggle: () => void;
   };
+  haptics?: {
+    isSupported: boolean;
+    isEnabled: boolean;
+    toggle: () => void;
+  };
 }
 
 export const SettingsModal = ({
   isOpen,
   onClose,
   wakeLock,
+  haptics,
 }: SettingsModalProps) => {
   const { state, set, swap } = useContext(ScoreContext);
 
@@ -130,6 +137,17 @@ export const SettingsModal = ({
                 isSupported={wakeLock.isSupported}
                 isEnabled={wakeLock.isEnabled}
                 onToggle={wakeLock.toggle}
+              />
+            </>
+          )}
+
+          {haptics && haptics.isSupported && (
+            <>
+              <div className="w-full h-px bg-border/40" />
+              <HapticsToggle
+                isSupported={haptics.isSupported}
+                isEnabled={haptics.isEnabled}
+                onToggle={haptics.toggle}
               />
             </>
           )}

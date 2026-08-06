@@ -1,6 +1,12 @@
-import { ScoreContext } from "@/hooks";
+import { getHapticsPreference, ScoreContext } from "@/hooks";
 import { Score, Team } from "@/types";
-import { getLocalScore, removeLocalScore, setLocalScore } from "@/utils";
+import {
+  getLocalScore,
+  hapticPatterns,
+  removeLocalScore,
+  setLocalScore,
+  vibrate,
+} from "@/utils";
 import { useEffect, useReducer, useMemo, type ReactNode, type FC } from "react";
 import { scoreReducer, defaultState } from "@/models/scoreModel";
 
@@ -34,14 +40,17 @@ export const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
   );
 
   const increase = (team: Team) => {
+    if (getHapticsPreference()) vibrate(hapticPatterns.tap);
     dispatch({ type: "INCREMENT", team });
   };
 
   const decrease = (team: Team) => {
+    if (getHapticsPreference()) vibrate(hapticPatterns.tap);
     dispatch({ type: "DECREMENT", team });
   };
 
   const reset = () => {
+    if (getHapticsPreference()) vibrate([...hapticPatterns.reset]);
     dispatch({ type: "RESET" });
     removeLocalScore("A");
     removeLocalScore("B");

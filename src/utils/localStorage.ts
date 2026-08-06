@@ -45,3 +45,21 @@ export const setWakeLockPreference = (enabled: boolean): void => {
     console.error("Failed to save to localStorage", e);
   }
 };
+
+export const getHapticsPreference = (): boolean => {
+  try {
+    const value = localStorage.getItem("hapticsEnabled");
+    return value === null ? true : value === "true";
+  } catch (e) {
+    console.error("Failed to access localStorage", e);
+    return true;
+  }
+};
+
+export const setHapticsPreference = (enabled: boolean): void => {
+  try {
+    localStorage.setItem("hapticsEnabled", String(enabled));
+  } catch (e) {
+    console.error("Failed to save to localStorage", e);
+  }
+};
