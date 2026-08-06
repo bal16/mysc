@@ -27,3 +27,22 @@ export const setLocalScore = (key: keyof Score, value: Score[keyof Score]) =>
 
 export const removeLocalScore = (key: keyof Score) =>
   localStorage.removeItem(key);
+
+export const getWakeLockPreference = (): boolean => {
+  try {
+    const value = localStorage.getItem("wakeLockEnabled");
+    return value === null ? true : value === "true";
+  } catch (e) {
+    console.error("Failed to access localStorage", e);
+    return true;
+  }
+};
+
+export const setWakeLockPreference = (enabled: boolean): void => {
+  try {
+    localStorage.setItem("wakeLockEnabled", String(enabled));
+  } catch (e) {
+    console.error("Failed to save to localStorage", e);
+  }
+};
+
