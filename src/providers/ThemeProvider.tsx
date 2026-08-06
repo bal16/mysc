@@ -1,32 +1,17 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Theme } from "@/types";
-
-interface ThemeContextType {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-function updateMetaTag(name: string, content: string) {
-  let meta = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
-  if (!meta) {
-    meta = document.createElement("meta");
-    meta.setAttribute("name", name);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute("content", content);
-}
-
-function getCssVar(name: string): string {
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-}
+import { getCssVar, updateMetaTag } from "@/utils/themeDom";
+import { ThemeContext } from "./themeContext";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
     try {
       const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "origin" || savedTheme === "amoled" || savedTheme === "premium-warm") {
+      if (
+        savedTheme === "origin" ||
+        savedTheme === "amoled" ||
+        savedTheme === "premium-warm"
+      ) {
         return savedTheme as Theme;
       }
     } catch (e) {
@@ -61,12 +46,4 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </ThemeContext.Provider>
   );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
 };

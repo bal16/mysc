@@ -1,4 +1,4 @@
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/hooks/useTheme";
 import { Theme } from "@/types";
 import { SettingsSelectOption } from "./SettingsSelectOption";
 import { clsx } from "clsx";
@@ -14,12 +14,14 @@ export const ThemeSwitcher = () => {
         onChange={(e) => setTheme(e.target.value as Theme)}
         className={clsx(
           "bg-surface text-foreground border border-border rounded-md px-3 py-2 outline-none transition-all cursor-pointer",
-          "focus:ring-2 focus:ring-primary/20 focus:border-primary hover:border-primary/50"
+          "focus:ring-2 focus:ring-primary/20 focus:border-primary hover:border-primary/50",
         )}
       >
         <SettingsSelectOption value="origin">Origin</SettingsSelectOption>
         <SettingsSelectOption value="amoled">AMOLED</SettingsSelectOption>
-        <SettingsSelectOption value="premium-warm">Premium Warm</SettingsSelectOption>
+        <SettingsSelectOption value="premium-warm">
+          Premium Warm
+        </SettingsSelectOption>
       </select>
     </div>
   );
