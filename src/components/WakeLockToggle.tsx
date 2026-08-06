@@ -16,7 +16,10 @@ export const WakeLockToggle = ({
   return (
     <div className="flex items-center justify-between gap-4 py-1">
       <div className="flex flex-col gap-0.5">
-        <label className="text-foreground font-medium cursor-pointer" onClick={onToggle}>
+        <label
+          className="text-foreground font-medium cursor-pointer"
+          onClick={onToggle}
+        >
           Keep Screen Awake
         </label>
         <span className="text-xs text-foreground/60">

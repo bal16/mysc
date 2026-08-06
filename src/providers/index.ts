@@ -1,1 +1,1 @@
-export * from './ScoreContextProvider';
+export * from "./ScoreContextProvider";

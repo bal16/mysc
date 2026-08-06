@@ -30,7 +30,7 @@ export const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
       setLocalScore("step", state.step);
       setLocalScore("isSwapped", state.isSwapped);
     },
-    [state],
+    [state]
   );
 
   const increase = (team: Team) => {

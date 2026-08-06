@@ -45,4 +45,3 @@ export const setWakeLockPreference = (enabled: boolean): void => {
     console.error("Failed to save to localStorage", e);
   }
 };
-

@@ -63,13 +63,13 @@ export const SettingsNumberInput = ({
 
   return (
     <div className="flex items-center justify-between py-1">
-      <label 
+      <label
         onClick={() => setIsEditing(true)}
         className="text-foreground font-medium cursor-pointer select-none"
       >
         {label}
       </label>
-      
+
       {isEditing ? (
         <input
           ref={inputRef}

@@ -1,4 +1,9 @@
-import { ResetButton, MainLayout, SettingsModal, WakeLockIndicator } from "@/components";
+import {
+  ResetButton,
+  MainLayout,
+  SettingsModal,
+  WakeLockIndicator,
+} from "@/components";
 import { ScoreProvider } from "@/providers";
 import { useWakeLock } from "@/hooks";
 import { useState } from "react";
@@ -24,4 +29,3 @@ function App() {
 }
 
 export default App;
-
