@@ -10,7 +10,9 @@ export interface UseWakeLockReturn {
 
 export const useWakeLock = (): UseWakeLockReturn => {
   const isSupported =
-    typeof navigator !== "undefined" && "wakeLock" in navigator;
+    typeof navigator !== "undefined" &&
+    "wakeLock" in navigator &&
+    window.isSecureContext;
 
   const [isEnabled, setIsEnabled] = useState<boolean>(() =>
     getWakeLockPreference()
