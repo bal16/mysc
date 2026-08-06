@@ -8,3 +8,5 @@ export * from "./ThemeSwitcher";
 export * from "./SettingsNumberInput";
 export * from "./SettingsFAB";
 export * from "./SettingsModal";
+export * from "./WakeLockIndicator";
+export * from "./WakeLockToggle";
