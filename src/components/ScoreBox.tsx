@@ -49,14 +49,14 @@ export const ScoreBox = ({
       className={clsx(
         "w-full h-full",
         label === "B" && "bg-score-canvas-b",
-        label === "A" && "bg-score-canvas-a",
+        label === "A" && "bg-score-canvas-a"
       )}
     >
       <div
         className={clsx(
           "relative flex items-center px-10 w-full h-full portrait:rotate-90 landscape:lg:rotate-0",
           variant === "L" && "justify-end",
-          variant === "R" && "justify-start",
+          variant === "R" && "justify-start"
         )}
         onClick={handleIncrement}
       >
@@ -66,7 +66,7 @@ export const ScoreBox = ({
             variant === "L" &&
               "pl-10 rounded-l-full bg-score-pill-a text-score-pill-text-a",
             variant === "R" &&
-              "pr-10 rounded-r-full bg-score-pill-b text-score-pill-text-b",
+              "pr-10 rounded-r-full bg-score-pill-b text-score-pill-text-b"
           )}
         >
           {variant == "L" && (

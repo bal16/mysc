@@ -1,4 +1,4 @@
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/hooks/useTheme";
 import { Theme } from "@/types";
 import { SettingsSelectOption } from "./SettingsSelectOption";
 import { clsx } from "clsx";
@@ -19,7 +19,9 @@ export const ThemeSwitcher = () => {
       >
         <SettingsSelectOption value="origin">Origin</SettingsSelectOption>
         <SettingsSelectOption value="amoled">AMOLED</SettingsSelectOption>
-        <SettingsSelectOption value="premium-warm">Premium Warm</SettingsSelectOption>
+        <SettingsSelectOption value="premium-warm">
+          Premium Warm
+        </SettingsSelectOption>
       </select>
     </div>
   );
