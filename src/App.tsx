@@ -3,6 +3,7 @@ import {
   MainLayout,
   SettingsModal,
   WakeLockIndicator,
+  PWABadge,
 } from "@/components";
 import { ScoreProvider } from "@/providers";
 import { useWakeLock, useHaptics } from "@/hooks";
@@ -25,6 +26,7 @@ function App() {
           wakeLock={wakeLock}
           haptics={haptics}
         />
+        <PWABadge />
       </ScoreProvider>
     </div>
   );
