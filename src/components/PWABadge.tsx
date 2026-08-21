@@ -1,36 +1,36 @@
-import { useRegisterSW } from 'virtual:pwa-register/react'
-import { useEffect, useState } from 'react'
+import { useRegisterSW } from "virtual:pwa-register/react";
+import { useEffect, useState } from "react";
 
 export function PWABadge() {
   const {
     offlineReady: [offlineReady, setOfflineReady],
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
-  } = useRegisterSW()
+  } = useRegisterSW();
 
-  const [show, setShow] = useState(false)
-  const [isClosing, setIsClosing] = useState(false)
+  const [show, setShow] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   // Sync internal show state with PWA states
   useEffect(() => {
     if (offlineReady || needRefresh) {
-      setShow(true)
-      setIsClosing(false)
+      setShow(true);
+      setIsClosing(false);
     }
-  }, [offlineReady, needRefresh])
+  }, [offlineReady, needRefresh]);
 
   const close = () => {
-    setIsClosing(true)
+    setIsClosing(true);
     // Wait for the exit animation to finish before removing from DOM
     setTimeout(() => {
-      setShow(false)
-      setOfflineReady(false)
-      setNeedRefresh(false)
-      setIsClosing(false)
-    }, 300) // matches duration-300
-  }
+      setShow(false);
+      setOfflineReady(false);
+      setNeedRefresh(false);
+      setIsClosing(false);
+    }, 300); // matches duration-300
+  };
 
-  if (!show) return null
+  if (!show) return null;
 
   return (
     <div
@@ -41,16 +41,14 @@ export function PWABadge() {
                   duration-300 ease-out
                   ${
                     isClosing
-                      ? 'animate-out slide-out-to-bottom-5 fade-out zoom-out-95'
-                      : 'animate-in slide-in-from-bottom-5 fade-in zoom-in-95'
+                      ? "animate-out slide-out-to-bottom-5 fade-out zoom-out-95"
+                      : "animate-in slide-in-from-bottom-5 fade-in zoom-in-95"
                   }`}
       role="alert"
     >
       <div className="flex flex-col gap-3">
         <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          {offlineReady
-            ? 'App ready to work offline'
-            : 'New update available'}
+          {offlineReady ? "App ready to work offline" : "New update available"}
         </div>
         <div className="flex gap-2">
           {needRefresh && (
@@ -70,5 +68,5 @@ export function PWABadge() {
         </div>
       </div>
     </div>
-  )
+  );
 }
