@@ -4,13 +4,18 @@ export default {
   registerType: "prompt",
   includeAssets: [
     "favicon.ico",
+    "favicon.svg",
+    "favicon-32x32.png",
     "apple-touch-icon.png",
     "Jaro/Jaro-Regular-VariableFont_opsz.ttf",
   ],
   manifest: {
-    name: "mysc. myscore",
+    id: "/",
+    name: "mysc. | Fast Badminton Score Counter for Every Game",
     short_name: "mysc.",
-    description: "Simple score counting app",
+    description:
+      "A fast, simple badminton score counter for casual matches, short games, and easy scorekeeping on every device.",
+    lang: "en",
     icons: [
       {
         src: "/android-chrome-192x192.png",
@@ -27,13 +32,13 @@ export default {
       {
         purpose: "maskable",
         sizes: "1024x1024",
-        src: "maskable_icon.png",
+        src: "/maskable_icon.png",
         type: "image/png",
       },
       {
         purpose: "maskable",
         sizes: "512x512",
-        src: "maskable_icon_x512.png",
+        src: "/maskable_icon_x512.png",
         type: "image/png",
       },
     ],
