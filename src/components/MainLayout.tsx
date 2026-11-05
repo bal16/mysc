@@ -33,6 +33,7 @@ export const MainLayout = ({ onOpenSettings }: MainLayoutProps) => {
 
   return (
     <main className="relative flex h-full w-full font-brand portrait:flex-col landscape:flex-row">
+      <h1 className="sr-only">Badminton and game score counter</h1>
       <SettingsFAB onClick={onOpenSettings} />
       {teams.map((team) => (
         <ScoreBox
