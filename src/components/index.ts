@@ -1,4 +1,6 @@
 export * from "./HapticsToggle";
+export * from "./Indicator";
+export * from "./Indicators";
 export * from "./MainLayout";
 export * from "./Odometer";
 export * from "./PWABadge";
@@ -11,5 +13,4 @@ export * from "./SettingsSelectOption";
 export * from "./SettingsSheet";
 export * from "./SlideButton";
 export * from "./ThemeSwitcher";
-export * from "./WakeLockIndicator";
 export * from "./WakeLockToggle";

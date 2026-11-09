@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
+@custom-variant horizontal (@media (orientation: landscape));
+@custom-variant vertical (@media (orientation: portrait));
+
 @font-face {
   font-family: "Jaro";
   src: url("/Jaro/Jaro-Regular-VariableFont_opsz.ttf") format("truetype");
