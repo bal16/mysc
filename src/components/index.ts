@@ -3,6 +3,7 @@ export * from "./HapticsToggle";
 export * from "./Indicator";
 export * from "./Indicators";
 export * from "./MainLayout";
+export * from "./Onboarding";
 export * from "./Odometer";
 export * from "./PWABadge";
 export * from "./ScoreBox";

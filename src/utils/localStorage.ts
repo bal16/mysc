@@ -63,3 +63,20 @@ export const setHapticsPreference = (enabled: boolean): void => {
     console.error("Failed to save to localStorage", e);
   }
 };
+
+export const getOnboardingCompleted = (): boolean => {
+  try {
+    return localStorage.getItem("hasCompletedOnboarding") === "true";
+  } catch (e) {
+    console.error("Failed to access localStorage", e);
+    return false;
+  }
+};
+
+export const setOnboardingCompleted = (): void => {
+  try {
+    localStorage.setItem("hasCompletedOnboarding", "true");
+  } catch (e) {
+    console.error("Failed to save onboarding state", e);
+  }
+};

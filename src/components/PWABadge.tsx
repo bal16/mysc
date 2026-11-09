@@ -34,7 +34,7 @@ export function PWABadge() {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 p-4 w-80 rounded-[2rem] 
+      className={`fixed bottom-6 right-6 z-50 p-4 w-80 rounded-2xl 
                   bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl 
                   border border-slate-200/50 dark:border-white/10
                   shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]
@@ -53,14 +53,14 @@ export function PWABadge() {
         <div className="flex gap-2">
           {needRefresh && (
             <button
-              className="flex-1 rounded-xl bg-zinc-900 dark:bg-white px-4 py-2 text-sm font-medium text-white dark:text-zinc-900 shadow-sm transition-transform active:scale-95"
+              className="flex-1 rounded-lg bg-zinc-900 dark:bg-white px-4 py-2 text-sm font-medium text-white dark:text-zinc-900 shadow-sm transition-transform active:scale-95"
               onClick={() => updateServiceWorker(true)}
             >
               Update & Reload
             </button>
           )}
           <button
-            className="flex-1 rounded-xl bg-black/5 dark:bg-white/10 px-4 py-2 text-sm font-medium text-zinc-900 dark:text-zinc-100 transition-transform active:scale-95"
+            className="flex-1 rounded-lg bg-black/5 dark:bg-white/10 px-4 py-2 text-sm font-medium text-zinc-900 dark:text-zinc-100 transition-transform active:scale-95"
             onClick={() => close()}
           >
             Dismiss
