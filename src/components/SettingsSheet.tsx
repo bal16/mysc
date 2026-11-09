@@ -63,7 +63,8 @@ export const SettingsSheet = ({
           "relative w-full max-w-md max-h-full overflow-y-auto bg-surface text-foreground h-full",
           "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
           "p-6 sm:p-8 flex flex-col gap-8",
-          "transform transition-all animate-in fade-in zoom-in-95 duration-200",
+          "transform animate-in fade-in duration-300",
+          "slide-in-from-right",
           "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" // Hide scrollbar for cleaner look
         )}
       >
