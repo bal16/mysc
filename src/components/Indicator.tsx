@@ -3,7 +3,8 @@ import { clsx } from "clsx";
 interface IndicatorProps {
   isSupported: boolean;
   isEnabled: boolean;
-  icon: React.ReactNode;
+  activeIcon: React.ReactNode;
+  inactiveIcon: React.ReactNode;
   label: string;
   onToggle: () => void;
 }
@@ -11,7 +12,8 @@ interface IndicatorProps {
 export const Indicator = ({
   isSupported,
   isEnabled,
-  icon,
+  activeIcon,
+  inactiveIcon,
   label,
   onToggle,
 }: IndicatorProps) => {
@@ -35,7 +37,7 @@ export const Indicator = ({
           : "border-border/40 bg-surface/80 text-foreground/50"
       )}
     >
-      {icon}
+      {isEnabled ? activeIcon : inactiveIcon}
     </button>
   );
 };
