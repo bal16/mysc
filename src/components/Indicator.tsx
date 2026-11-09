@@ -33,7 +33,7 @@ export const Indicator = ({
         "focus:outline-none focus:ring-2 focus:ring-primary/20",
         "horizontal:rotate-0 vertical:rotate-90",
         isEnabled
-          ? "border-primary/40 bg-primary/15 text-primary"
+          ? "border-primary bg-surface text-primary"
           : "border-border/50 bg-surface text-foreground/70"
       )}
     >
