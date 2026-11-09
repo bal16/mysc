@@ -57,7 +57,7 @@ export const Onboarding = ({
   const [isMobileLandscape, setIsMobileLandscape] = useState<boolean>(() => {
     try {
       return window.matchMedia(
-        "(orientation: landscape) and (max-width: 767px)"
+        "(orientation: landscape) and (max-height: 500px)"
       ).matches;
     } catch {
       return false;
@@ -85,7 +85,7 @@ export const Onboarding = ({
       "(orientation: portrait) and (max-width: 767px)"
     );
     const landscapeQuery = window.matchMedia(
-      "(orientation: landscape) and (max-width: 767px)"
+      "(orientation: landscape) and (max-height: 500px)"
     );
 
     const handlePortrait = () => setIsMobilePortrait(portraitQuery.matches);
