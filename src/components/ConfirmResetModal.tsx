@@ -92,7 +92,7 @@ export const ConfirmResetModal = ({
       <div
         className={clsx(
           "fixed z-50 bg-surface text-foreground overflow-y-auto",
-          "p-6 sm:p-8 flex flex-col gap-6",
+          "p-6 sm:p-8 pb-8 flex flex-col gap-6",
           "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
           "transform transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "portrait:inset-0 portrait:w-full portrait:max-w-none portrait:rounded-none portrait:h-full",

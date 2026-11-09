@@ -366,7 +366,7 @@ export const Onboarding = ({
         className={clsx(
           "fixed z-[61] bg-surface text-foreground overflow-y-auto",
           "inset-y-0 right-0 w-96 max-w-[95vw] h-full",
-          "p-6 flex flex-col gap-6",
+          "p-6 pb-8 flex flex-col gap-6",
           "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border-l border-border/50",
           "animate-in slide-in-from-right duration-200",
           "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
