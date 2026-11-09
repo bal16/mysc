@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
 import { ScoreBox } from "@/components";
-import { SettingsFAB } from "./SettingsFAB";
+import { SpeedDialFAB } from "./SpeedDialFAB";
 import { ScoreContext } from "@/hooks";
 import type { Team } from "@/types";
 
@@ -33,7 +33,7 @@ export const MainLayout = ({ onOpenSettings }: MainLayoutProps) => {
 
   return (
     <main className="relative flex h-full w-full font-brand portrait:flex-col landscape:flex-row">
-      <SettingsFAB onClick={onOpenSettings} />
+      <SpeedDialFAB onOpenSettings={onOpenSettings} />
       {teams.map((team) => (
         <ScoreBox
           key={team.id}
