@@ -29,7 +29,7 @@ export const ConfirmResetModal = ({
 
       <div
         className={clsx(
-          "relative w-full max-w-sm bg-surface text-foreground rounded-[2rem]",
+          "relative w-full max-w-sm bg-surface text-foreground rounded-2xl",
           "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
           "p-6 sm:p-8 flex flex-col gap-6",
           "transform transition-all animate-in fade-in zoom-in-95 duration-200"
