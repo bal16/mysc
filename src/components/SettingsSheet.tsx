@@ -45,28 +45,29 @@ export const SettingsSheet = ({
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-end h-full"
-      role="dialog"
-      aria-modal="true"
-    >
-      {/* Backdrop (Focus-trapping overlay) */}
+    <>
+      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Modal Container */}
+      {/* Adaptive Panel */}
       <div
         className={clsx(
-          "relative w-full max-w-md max-h-full overflow-y-auto bg-surface text-foreground h-full",
-          "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
+          "fixed z-50 bg-surface text-foreground overflow-y-auto",
           "p-6 sm:p-8 flex flex-col gap-8",
-          "transform animate-in fade-in duration-300",
-          "slide-in-from-right",
-          "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" // Hide scrollbar for cleaner look
+          "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
+          "transform transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "portrait:inset-0 portrait:w-full portrait:max-w-none portrait:rounded-none portrait:h-full",
+          "portrait:animate-in portrait:fade-in portrait:slide-in-from-right",
+          "landscape:inset-y-0 landscape:right-0 landscape:w-96 landscape:max-w-[95vw] landscape:h-full landscape:rounded-none",
+          "landscape:animate-in landscape:slide-in-from-right",
+          "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         )}
+        role="dialog"
+        aria-modal="true"
       >
         {/* Header */}
         <div className="flex items-center">
@@ -156,6 +157,6 @@ export const SettingsSheet = ({
           <ThemeSwitcher />
         </div>
       </div>
-    </div>
+    </>
   );
 };
