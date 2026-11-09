@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { RiCloseLine, RiResetLeftLine } from "react-icons/ri";
 import { clsx } from "clsx";
 
@@ -6,32 +5,19 @@ interface ConfirmResetModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
+  title?: string;
+  message?: string;
+  confirmLabel?: string;
 }
 
 export const ConfirmResetModal = ({
   isOpen,
   onClose,
   onConfirm,
+  title = "Reset Score?",
+  message = "Are you sure you want to reset the score? This action cannot be undone.",
+  confirmLabel = "Reset",
 }: ConfirmResetModalProps) => {
-  const [isMobileLandscape, setIsMobileLandscape] = useState<boolean>(() => {
-    try {
-      return window.matchMedia(
-        "(orientation: landscape) and (max-height: 500px)"
-      ).matches;
-    } catch {
-      return false;
-    }
-  });
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(
-      "(orientation: landscape) and (max-height: 500px)"
-    );
-    const handler = () => setIsMobileLandscape(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
   if (!isOpen) return null;
 
   const content = (
@@ -45,7 +31,7 @@ export const ConfirmResetModal = ({
             id="confirm-reset-title"
             className="text-xl font-semibold tracking-tight"
           >
-            Reset Score?
+            {title}
           </h2>
         </div>
         <button
@@ -62,9 +48,7 @@ export const ConfirmResetModal = ({
         </button>
       </div>
 
-      <p className="text-foreground/70">
-        Are you sure you want to reset the score? This action cannot be undone.
-      </p>
+      <p className="text-foreground/70">{message}</p>
 
       <div className="flex gap-3">
         <button
@@ -89,62 +73,40 @@ export const ConfirmResetModal = ({
             "focus:outline-none focus:ring-2 focus:ring-red-500/40"
           )}
         >
-          Reset
+          {confirmLabel}
         </button>
       </div>
     </>
   );
 
-  if (isMobileLandscape) {
-    return (
-      <div
-        className="fixed inset-0 z-50 flex items-end justify-center p-4"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="confirm-reset-title"
-      >
-        <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
-          onClick={onClose}
-          aria-hidden="true"
-        />
-        <div
-          className={clsx(
-            "relative w-full max-w-sm bg-surface text-foreground rounded-t-2xl",
-            "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
-            "p-6 flex flex-col gap-6",
-            "animate-in slide-in-from-bottom-5 fade-in duration-200"
-          )}
-        >
-          {content}
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="confirm-reset-title"
-    >
+    <>
+      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
+      {/* Adaptive Panel */}
       <div
         className={clsx(
-          "relative w-full max-w-sm bg-surface text-foreground rounded-2xl",
-          "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
+          "fixed z-50 bg-surface text-foreground overflow-y-auto",
           "p-6 sm:p-8 flex flex-col gap-6",
-          "transform transition-all animate-in fade-in zoom-in-95 duration-200"
+          "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border border-border/50",
+          "transform transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "portrait:inset-0 portrait:w-full portrait:max-w-none portrait:rounded-none portrait:h-full",
+          "portrait:animate-in portrait:fade-in portrait:slide-in-from-right",
+          "landscape:inset-y-0 landscape:right-0 landscape:w-96 landscape:max-w-[95vw] landscape:h-full landscape:rounded-none",
+          "landscape:animate-in landscape:slide-in-from-right",
+          "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         )}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirm-reset-title"
       >
         {content}
       </div>
-    </div>
+    </>
   );
 };

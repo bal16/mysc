@@ -54,16 +54,6 @@ export const Onboarding = ({
     }
   });
 
-  const [isMobileLandscape, setIsMobileLandscape] = useState<boolean>(() => {
-    try {
-      return window.matchMedia(
-        "(orientation: landscape) and (max-height: 500px)"
-      ).matches;
-    } catch {
-      return false;
-    }
-  });
-
   const [index, setIndex] = useState(0);
   const [showAgain, setShowAgain] = useState(false);
 
@@ -81,23 +71,12 @@ export const Onboarding = ({
   }, [index, slideIds.length]);
 
   useEffect(() => {
-    const portraitQuery = window.matchMedia(
+    const mediaQuery = window.matchMedia(
       "(orientation: portrait) and (max-width: 767px)"
     );
-    const landscapeQuery = window.matchMedia(
-      "(orientation: landscape) and (max-height: 500px)"
-    );
-
-    const handlePortrait = () => setIsMobilePortrait(portraitQuery.matches);
-    const handleLandscape = () => setIsMobileLandscape(landscapeQuery.matches);
-
-    portraitQuery.addEventListener("change", handlePortrait);
-    landscapeQuery.addEventListener("change", handleLandscape);
-
-    return () => {
-      portraitQuery.removeEventListener("change", handlePortrait);
-      landscapeQuery.removeEventListener("change", handleLandscape);
-    };
+    const handler = () => setIsMobilePortrait(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
   useEffect(() => {
@@ -372,67 +351,25 @@ export const Onboarding = ({
     );
   }
 
-  if (isMobileLandscape) {
-    return (
-      <div
-        className="fixed inset-0 z-[60] flex items-end justify-center p-4"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Onboarding"
-      >
-        <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          aria-hidden="true"
-        />
-        <div
-          className={clsx(
-            "relative w-full max-w-md max-h-[85vh] overflow-y-auto",
-            "bg-surface text-foreground rounded-t-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)]",
-            "border border-border/50 p-6 flex flex-col gap-5",
-            "animate-in slide-in-from-bottom-5 fade-in duration-200"
-          )}
-        >
-          {slideIds.length > 1 && (
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-foreground/50">
-                Step {index + 1} of {slideIds.length}
-              </span>
-            </div>
-          )}
-          {renderSlide()}
-          <div className="flex flex-col gap-3">
-            <label className="flex items-center gap-2 text-xs text-foreground/60">
-              <input
-                type="checkbox"
-                checked={showAgain}
-                onChange={(event) => setShowAgain(event.target.checked)}
-                className="h-4 w-4 rounded border-border"
-              />
-              Show this guide again next time
-            </label>
-            {navigation}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-[60]"
       role="dialog"
       aria-modal="true"
       aria-label="Onboarding"
     >
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
         aria-hidden="true"
       />
       <div
         className={clsx(
-          "relative w-full max-w-md max-h-[90vh] overflow-y-auto",
-          "bg-surface text-foreground rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)]",
-          "border border-border/50 p-6 sm:p-8 flex flex-col gap-6"
+          "fixed z-[61] bg-surface text-foreground overflow-y-auto",
+          "inset-y-0 right-0 w-96 max-w-[95vw] h-full",
+          "p-6 flex flex-col gap-6",
+          "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] border-l border-border/50",
+          "animate-in slide-in-from-right duration-200",
+          "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         )}
       >
         {slideIds.length > 1 && (

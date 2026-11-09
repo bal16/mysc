@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ScoreContext } from "@/hooks";
 import { SettingsNumberInput } from "./SettingsNumberInput";
+import { ConfirmResetModal } from "./ConfirmResetModal";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { WakeLockToggle } from "./WakeLockToggle";
 import { HapticsToggle } from "./HapticsToggle";
@@ -31,6 +32,8 @@ export const SettingsSheet = ({
   onResetPreferences,
 }: SettingsSheetProps) => {
   const { state, set, swap } = useContext(ScoreContext);
+  const [isConfirmResetPreferencesOpen, setIsConfirmResetPreferencesOpen] =
+    useState(false);
 
   // Prevent scrolling on body when modal is open
   useEffect(() => {
@@ -163,10 +166,7 @@ export const SettingsSheet = ({
               <div className="w-full h-px bg-border/40" />
               <button
                 type="button"
-                onClick={() => {
-                  onClose();
-                  onResetPreferences();
-                }}
+                onClick={() => setIsConfirmResetPreferencesOpen(true)}
                 className={clsx(
                   "flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-medium",
                   "bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20",
@@ -181,6 +181,19 @@ export const SettingsSheet = ({
           )}
         </div>
       </div>
+
+      <ConfirmResetModal
+        isOpen={isConfirmResetPreferencesOpen}
+        onClose={() => setIsConfirmResetPreferencesOpen(false)}
+        onConfirm={() => {
+          setIsConfirmResetPreferencesOpen(false);
+          onClose();
+          onResetPreferences?.();
+        }}
+        title="Reset preferences?"
+        message="This will reset onboarding, theme, haptics, and wake lock preferences to their defaults."
+        confirmLabel="Reset"
+      />
     </>
   );
 };
