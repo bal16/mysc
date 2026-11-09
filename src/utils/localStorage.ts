@@ -63,3 +63,41 @@ export const setHapticsPreference = (enabled: boolean): void => {
     console.error("Failed to save to localStorage", e);
   }
 };
+
+export const getOnboardingCompleted = (): boolean => {
+  try {
+    return localStorage.getItem("hasCompletedOnboarding") === "true";
+  } catch (e) {
+    console.error("Failed to access localStorage", e);
+    return false;
+  }
+};
+
+export const setOnboardingCompleted = (): void => {
+  try {
+    localStorage.setItem("hasCompletedOnboarding", "true");
+  } catch (e) {
+    console.error("Failed to save onboarding state", e);
+  }
+};
+
+export const getShowOnboardingAgain = (): boolean => {
+  try {
+    return localStorage.getItem("showOnboardingAgain") === "true";
+  } catch (e) {
+    console.error("Failed to access localStorage", e);
+    return false;
+  }
+};
+
+export const setShowOnboardingAgain = (enabled: boolean): void => {
+  try {
+    if (enabled) {
+      localStorage.setItem("showOnboardingAgain", "true");
+    } else {
+      localStorage.removeItem("showOnboardingAgain");
+    }
+  } catch (e) {
+    console.error("Failed to save onboarding replay preference", e);
+  }
+};

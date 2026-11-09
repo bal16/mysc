@@ -4,9 +4,20 @@ import {
   MainLayout,
   SettingsSheet,
   PWABadge,
+  Onboarding,
 } from "@/components";
 import { ScoreProvider } from "@/providers";
-import { useWakeLock, useHaptics } from "@/hooks";
+import {
+  useWakeLock,
+  useHaptics,
+  usePWAInstall,
+  useTheme,
+  useResetPreferences,
+} from "@/hooks";
+import {
+  getOnboardingCompleted,
+  getShowOnboardingAgain,
+} from "@/utils/localStorage";
 import {
   RiLightbulbFill,
   RiLightbulbLine,
@@ -17,8 +28,19 @@ import { useState } from "react";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(
+    () => !getOnboardingCompleted() || getShowOnboardingAgain()
+  );
   const wakeLock = useWakeLock();
   const haptics = useHaptics();
+  const pwaInstall = usePWAInstall();
+  const { setTheme } = useTheme();
+  const resetPreferences = useResetPreferences({
+    setTheme,
+    wakeLock,
+    haptics,
+    onShowOnboarding: () => setShowOnboarding(true),
+  });
 
   return (
     <div className="relative h-screen overflow-hidden w-screen text-foreground">
@@ -47,8 +69,17 @@ function App() {
           onClose={() => setIsModalOpen(false)}
           wakeLock={wakeLock}
           haptics={haptics}
+          onResetPreferences={resetPreferences}
         />
         <PWABadge />
+        {showOnboarding && (
+          <Onboarding
+            wakeLock={wakeLock}
+            haptics={haptics}
+            pwaInstall={pwaInstall}
+            onComplete={() => setShowOnboarding(false)}
+          />
+        )}
       </ScoreProvider>
     </div>
   );
