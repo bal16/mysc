@@ -53,6 +53,7 @@ function App() {
           onClose={() => setIsModalOpen(false)}
           wakeLock={wakeLock}
           haptics={haptics}
+          onReplayOnboarding={() => setShowOnboarding(true)}
         />
         <PWABadge />
         {showOnboarding && (

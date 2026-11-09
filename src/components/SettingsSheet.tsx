@@ -20,6 +20,7 @@ interface SettingsSheetProps {
     isEnabled: boolean;
     toggle: () => void;
   };
+  onReplayOnboarding?: () => void;
 }
 
 export const SettingsSheet = ({
@@ -27,6 +28,7 @@ export const SettingsSheet = ({
   onClose,
   wakeLock,
   haptics,
+  onReplayOnboarding,
 }: SettingsSheetProps) => {
   const { state, set, swap } = useContext(ScoreContext);
 
@@ -155,6 +157,28 @@ export const SettingsSheet = ({
 
           {/* Theme Settings */}
           <ThemeSwitcher />
+
+          {onReplayOnboarding && (
+            <>
+              <div className="w-full h-px bg-border/40" />
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onReplayOnboarding();
+                }}
+                className={clsx(
+                  "flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-medium",
+                  "bg-surface border border-border shadow-sm",
+                  "hover:bg-muted hover:shadow-md active:scale-[0.98]",
+                  "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "focus:outline-none focus:ring-2 focus:ring-primary/20"
+                )}
+              >
+                Replay onboarding
+              </button>
+            </>
+          )}
         </div>
       </div>
     </>
