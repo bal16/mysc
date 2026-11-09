@@ -359,7 +359,7 @@ export const Onboarding = ({
       <div
         className={clsx(
           "relative w-full max-w-md max-h-[90vh] overflow-y-auto",
-          "bg-surface text-foreground rounded-[2rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)]",
+          "bg-surface text-foreground rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)]",
           "border border-border/50 p-6 sm:p-8 flex flex-col gap-6"
         )}
       >

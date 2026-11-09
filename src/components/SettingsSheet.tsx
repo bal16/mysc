@@ -20,6 +20,7 @@ interface SettingsSheetProps {
     isEnabled: boolean;
     toggle: () => void;
   };
+  onResetPreferences?: () => void;
 }
 
 export const SettingsSheet = ({
@@ -27,6 +28,7 @@ export const SettingsSheet = ({
   onClose,
   wakeLock,
   haptics,
+  onResetPreferences,
 }: SettingsSheetProps) => {
   const { state, set, swap } = useContext(ScoreContext);
 
@@ -155,6 +157,28 @@ export const SettingsSheet = ({
 
           {/* Theme Settings */}
           <ThemeSwitcher />
+
+          {onResetPreferences && (
+            <>
+              <div className="w-full h-px bg-border/40" />
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onResetPreferences();
+                }}
+                className={clsx(
+                  "flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-medium",
+                  "bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20",
+                  "hover:bg-red-500/20 active:scale-[0.98]",
+                  "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "focus:outline-none focus:ring-2 focus:ring-red-500/40"
+                )}
+              >
+                Reset preferences
+              </button>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -8,7 +8,6 @@ export * from "./Odometer";
 export * from "./PWABadge";
 export * from "./ScoreBox";
 export * from "./SpeedDialFAB";
-export * from "./SettingsModal";
 export * from "./SettingsNumberInput";
 export * from "./SettingsSelectOption";
 export * from "./SettingsSheet";
