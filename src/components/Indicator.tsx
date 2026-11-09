@@ -34,7 +34,7 @@ export const Indicator = ({
         "horizontal:rotate-0 vertical:rotate-90",
         isEnabled
           ? "border-primary/40 bg-primary/15 text-primary"
-          : "border-border/40 bg-surface/80 text-foreground/50"
+          : "border-border/50 bg-surface text-foreground/70"
       )}
     >
       {isEnabled ? activeIcon : inactiveIcon}
