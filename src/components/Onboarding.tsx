@@ -247,30 +247,34 @@ export const Onboarding = ({
 
   const navigation = (
     <div className="flex items-center justify-between gap-3 pt-2">
-      <button
-        type="button"
-        onClick={handleComplete}
-        className={clsx(
-          "px-4 py-2 rounded-xl text-sm font-medium",
-          "bg-muted/50 text-foreground/80",
-          "hover:bg-muted active:scale-95",
-          "transition-all duration-200"
-        )}
-      >
-        Skip
-      </button>
+      {slideIds.length > 1 && (
+        <button
+          type="button"
+          onClick={handleComplete}
+          className={clsx(
+            "px-4 py-2 rounded-xl text-sm font-medium",
+            "bg-muted/50 text-foreground/80",
+            "hover:bg-muted active:scale-95",
+            "transition-all duration-200"
+          )}
+        >
+          Skip
+        </button>
+      )}
 
-      <div className="flex items-center gap-1.5">
-        {slideIds.map((slide, slideIndex) => (
-          <span
-            key={slide}
-            className={clsx(
-              "h-2 rounded-full transition-all duration-200",
-              slideIndex === index ? "w-6 bg-primary" : "w-2 bg-muted"
-            )}
-          />
-        ))}
-      </div>
+      {slideIds.length > 1 && (
+        <div className="flex items-center gap-1.5">
+          {slideIds.map((slide, slideIndex) => (
+            <span
+              key={slide}
+              className={clsx(
+                "h-2 rounded-full transition-all duration-200",
+                slideIndex === index ? "w-6 bg-primary" : "w-2 bg-muted"
+              )}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="flex items-center gap-2">
         {index > 0 && (
@@ -320,9 +324,11 @@ export const Onboarding = ({
         aria-label="Onboarding"
       >
         <header className="flex items-center justify-between p-6 pb-2">
-          <span className="text-xs font-medium text-foreground/50">
-            Step {index + 1} of {slideIds.length}
-          </span>
+          {slideIds.length > 1 && (
+            <span className="text-xs font-medium text-foreground/50">
+              Step {index + 1} of {slideIds.length}
+            </span>
+          )}
         </header>
         <main className="flex-1 overflow-y-auto px-6 pb-6">
           {renderSlide()}
@@ -363,11 +369,13 @@ export const Onboarding = ({
           "border border-border/50 p-6 sm:p-8 flex flex-col gap-6"
         )}
       >
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-medium text-foreground/50">
-            Step {index + 1} of {slideIds.length}
-          </span>
-        </div>
+        {slideIds.length > 1 && (
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium text-foreground/50">
+              Step {index + 1} of {slideIds.length}
+            </span>
+          </div>
+        )}
         {renderSlide()}
         <div className="flex flex-col gap-3">
           <label className="flex items-center gap-2 text-xs text-foreground/60">

@@ -7,7 +7,13 @@ import {
   Onboarding,
 } from "@/components";
 import { ScoreProvider } from "@/providers";
-import { useWakeLock, useHaptics, usePWAInstall, useTheme } from "@/hooks";
+import {
+  useWakeLock,
+  useHaptics,
+  usePWAInstall,
+  useTheme,
+  useResetPreferences,
+} from "@/hooks";
 import {
   getOnboardingCompleted,
   getShowOnboardingAgain,
@@ -29,31 +35,12 @@ function App() {
   const haptics = useHaptics();
   const pwaInstall = usePWAInstall();
   const { setTheme } = useTheme();
-
-  const resetPreferences = () => {
-    try {
-      localStorage.removeItem("hasCompletedOnboarding");
-      localStorage.removeItem("showOnboardingAgain");
-      localStorage.removeItem("theme");
-      localStorage.removeItem("theme_palette");
-      localStorage.removeItem("theme_mode");
-      localStorage.setItem("hapticsEnabled", "true");
-      localStorage.setItem("wakeLockEnabled", "true");
-    } catch (error) {
-      console.error("Failed to reset preferences", error);
-    }
-
-    setTheme("origin");
-
-    if (haptics.isSupported && !haptics.isEnabled) {
-      haptics.toggle();
-    }
-    if (wakeLock.isSupported && !wakeLock.isEnabled) {
-      wakeLock.toggle();
-    }
-
-    setShowOnboarding(true);
-  };
+  const resetPreferences = useResetPreferences({
+    setTheme,
+    wakeLock,
+    haptics,
+    onShowOnboarding: () => setShowOnboarding(true),
+  });
 
   return (
     <div className="relative h-screen overflow-hidden w-screen text-foreground">
