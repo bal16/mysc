@@ -3,7 +3,10 @@ import { useTheme } from "@/hooks/useTheme";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { WakeLockToggle } from "./WakeLockToggle";
 import { HapticsToggle } from "./HapticsToggle";
-import { setOnboardingCompleted } from "@/utils/localStorage";
+import {
+  setOnboardingCompleted,
+  setShowOnboardingAgain,
+} from "@/utils/localStorage";
 import { clsx } from "clsx";
 import {
   RiArrowLeftLine,
@@ -52,6 +55,7 @@ export const Onboarding = ({
   });
 
   const [index, setIndex] = useState(0);
+  const [showAgain, setShowAgain] = useState(false);
 
   const slideIds = useMemo<SlideId[]>(() => {
     const ids: SlideId[] = ["welcome"];
@@ -92,6 +96,7 @@ export const Onboarding = ({
 
   const handleComplete = () => {
     setOnboardingCompleted();
+    setShowOnboardingAgain(showAgain);
     onComplete();
   };
 
@@ -323,7 +328,18 @@ export const Onboarding = ({
           {renderSlide()}
         </main>
         <footer className="p-6 pt-2 border-t border-border/40">
-          {navigation}
+          <div className="flex flex-col gap-3">
+            <label className="flex items-center gap-2 text-xs text-foreground/60">
+              <input
+                type="checkbox"
+                checked={showAgain}
+                onChange={(event) => setShowAgain(event.target.checked)}
+                className="h-4 w-4 rounded border-border"
+              />
+              Show this guide again next time
+            </label>
+            {navigation}
+          </div>
         </footer>
       </div>
     );
@@ -353,7 +369,18 @@ export const Onboarding = ({
           </span>
         </div>
         {renderSlide()}
-        {navigation}
+        <div className="flex flex-col gap-3">
+          <label className="flex items-center gap-2 text-xs text-foreground/60">
+            <input
+              type="checkbox"
+              checked={showAgain}
+              onChange={(event) => setShowAgain(event.target.checked)}
+              className="h-4 w-4 rounded border-border"
+            />
+            Show this guide again next time
+          </label>
+          {navigation}
+        </div>
       </div>
     </div>
   );

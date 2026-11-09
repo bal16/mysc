@@ -8,7 +8,10 @@ import {
 } from "@/components";
 import { ScoreProvider } from "@/providers";
 import { useWakeLock, useHaptics, usePWAInstall } from "@/hooks";
-import { getOnboardingCompleted } from "@/utils/localStorage";
+import {
+  getOnboardingCompleted,
+  getShowOnboardingAgain,
+} from "@/utils/localStorage";
 import {
   RiLightbulbFill,
   RiLightbulbLine,
@@ -20,7 +23,7 @@ import { useState } from "react";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(
-    () => !getOnboardingCompleted()
+    () => !getOnboardingCompleted() || getShowOnboardingAgain()
   );
   const wakeLock = useWakeLock();
   const haptics = useHaptics();
@@ -53,7 +56,6 @@ function App() {
           onClose={() => setIsModalOpen(false)}
           wakeLock={wakeLock}
           haptics={haptics}
-          onReplayOnboarding={() => setShowOnboarding(true)}
         />
         <PWABadge />
         {showOnboarding && (
