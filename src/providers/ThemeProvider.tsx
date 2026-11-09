@@ -27,7 +27,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Read colors from CSS variables (single source of truth)
     // Class must be applied first before reading computed style
-    updateMetaTag("theme-color", getCssVar("--primary"));
+    // Note: theme-color drives the PWA safe-area chrome (status bar / nav bar).
+    // Use --bg so the safe area always matches the app background (black in AMOLED).
+    updateMetaTag("theme-color", getCssVar("--bg"));
     updateMetaTag("background-color", getCssVar("--bg"));
 
     try {
