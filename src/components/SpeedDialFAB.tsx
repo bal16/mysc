@@ -120,7 +120,7 @@ export const SpeedDialFAB = ({ onOpenSettings }: SpeedDialFABProps) => {
           aria-expanded={isExpanded}
           className={clsx(
             "flex items-center justify-center w-14 h-14 rounded-full",
-            "bg-primary text-white shadow-lg",
+            "border-2 border-surface bg-primary text-white shadow-lg",
             "hover:scale-105 active:scale-95",
             "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
             "focus:outline-none focus:ring-2 focus:ring-primary/40"
