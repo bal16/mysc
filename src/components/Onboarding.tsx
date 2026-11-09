@@ -379,8 +379,8 @@ export const Onboarding = ({
             </span>
           </div>
         )}
-        {renderSlide()}
-        <div className="flex flex-col gap-3">
+        <div className="flex-1">{renderSlide()}</div>
+        <div className="flex flex-col gap-3 mt-auto">
           <label className="flex items-center gap-2 text-xs text-foreground/60">
             <input
               type="checkbox"

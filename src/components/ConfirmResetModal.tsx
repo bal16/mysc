@@ -50,7 +50,7 @@ export const ConfirmResetModal = ({
 
       <p className="text-foreground/70">{message}</p>
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 mt-auto">
         <button
           onClick={onClose}
           className={clsx(
