@@ -53,7 +53,7 @@ export const SpeedDialFAB = ({ onOpenSettings }: SpeedDialFABProps) => {
         />
       )}
 
-      <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-3">
+      <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-3 pointer-events-none">
         {/* Sub-actions */}
         <div
           className={clsx(
@@ -119,6 +119,7 @@ export const SpeedDialFAB = ({ onOpenSettings }: SpeedDialFABProps) => {
           aria-label={isExpanded ? "Close speed dial" : "Open speed dial"}
           aria-expanded={isExpanded}
           className={clsx(
+            "pointer-events-auto",
             "flex items-center justify-center w-14 h-14 rounded-full",
             "border-2 border-surface bg-primary text-white shadow-lg",
             "hover:scale-105 active:scale-95",

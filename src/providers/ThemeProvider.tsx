@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ColorPalette, DisplayMode, Theme } from "@/types";
-import { getCssVar, updateMetaTag } from "@/utils/themeDom";
+import {
+  getCssVar,
+  updateMetaTag,
+  updateRootBackgroundColor,
+} from "@/utils/themeDom";
 import { ThemeContext } from "./themeContext";
 
 const DEFAULT_PALETTE: ColorPalette = "origin";
@@ -77,8 +81,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     // Class must be applied first before reading computed style
     // Note: theme-color drives the PWA safe-area chrome (status bar / nav bar).
     // Use --bg so the safe area always matches the app background (black in AMOLED, charcoal in Dark, etc.).
-    updateMetaTag("theme-color", getCssVar("--bg"));
-    updateMetaTag("background-color", getCssVar("--bg"));
+    const bgColor = getCssVar("--bg");
+    updateMetaTag("theme-color", bgColor);
+    updateMetaTag("background-color", bgColor);
+    updateRootBackgroundColor(bgColor);
 
     try {
       localStorage.setItem("theme_palette", palette);

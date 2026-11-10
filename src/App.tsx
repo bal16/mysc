@@ -43,7 +43,7 @@ function App() {
   });
 
   return (
-    <div className="relative h-screen overflow-hidden w-screen text-foreground">
+    <div className="relative h-dvh overflow-hidden w-screen text-foreground">
       <ScoreProvider>
         <MainLayout onOpenSettings={() => setIsModalOpen(true)} />
         <Indicators>

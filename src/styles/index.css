@@ -172,8 +172,21 @@
   }
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  background-color: var(--bg);
+  transition: background-color 0.3s ease;
+}
+
 body {
   font-family: var(--font-brand);
   background-color: var(--bg);
   color: var(--fg);
+  transition: background-color 0.3s ease;
 }
