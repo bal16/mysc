@@ -32,8 +32,7 @@
 }
 
 @layer base {
-  :root,
-  .theme-origin {
+  :root {
     --team-a: #1da1f2;
     --team-b: #3b82f6;
     --primary: #1da1f2;
@@ -52,6 +51,92 @@
     --score-pill-text-b: var(--fg);
   }
 
+  /* Color Palettes */
+  .palette-origin {
+    --team-a: #1da1f2;
+    --team-b: #3b82f6;
+    --primary: #1da1f2;
+    --secondary: #3b82f6;
+  }
+
+  .palette-premium-warm {
+    --team-a: #a15d2b;
+    --team-b: #c98a4a;
+    --primary: #a15d2b;
+    --secondary: #c98a4a;
+  }
+
+  /* Display Modes */
+  .mode-light {
+    --bg: #fdf6e3;
+    --surface: #f7ebd7;
+    --fg: #2f241b;
+    --border: #d8c2a4;
+
+    /* Layout Mapping: Colored Screen, Surface Pill, Dark Text */
+    --score-canvas-a: var(--team-a);
+    --score-canvas-b: var(--team-b);
+    --score-pill-a: var(--surface);
+    --score-pill-b: var(--surface);
+    --score-pill-text-a: var(--fg);
+    --score-pill-text-b: var(--fg);
+  }
+
+  .mode-dark {
+    --bg: #141414;
+    --surface: #1f1f1f;
+    --fg: #f4f4f5;
+    --border: #2e2e2e;
+
+    /* Layout Mapping: Dark Screen, Surface Pill, Neon/Accent Text */
+    --score-canvas-a: var(--bg);
+    --score-canvas-b: var(--bg);
+    --score-pill-a: var(--surface);
+    --score-pill-b: var(--surface);
+    --score-pill-text-a: var(--team-a);
+    --score-pill-text-b: var(--team-b);
+  }
+
+  .mode-amoled {
+    --bg: #000000;
+    --surface: #111111;
+    --fg: #ffffff;
+    --border: #1f1f1f;
+
+    /* Layout Mapping: Black Screen, Dark Pill, Neon/Accent Text */
+    --score-canvas-a: var(--bg);
+    --score-canvas-b: var(--bg);
+    --score-pill-a: var(--surface);
+    --score-pill-b: var(--surface);
+    --score-pill-text-a: var(--team-a);
+    --score-pill-text-b: var(--team-b);
+  }
+
+  /* Palette nuances for Light Mode */
+  .palette-premium-warm.mode-light {
+    --bg: #f5ebdd;
+    --surface: #efe0c9;
+    --border: #d4b28a;
+  }
+
+  /* Legacy Class Support */
+  .theme-origin {
+    --team-a: #1da1f2;
+    --team-b: #3b82f6;
+    --primary: #1da1f2;
+    --secondary: #3b82f6;
+    --bg: #fdf6e3;
+    --surface: #f7ebd7;
+    --fg: #2f241b;
+    --border: #d8c2a4;
+    --score-canvas-a: var(--team-a);
+    --score-canvas-b: var(--team-b);
+    --score-pill-a: var(--surface);
+    --score-pill-b: var(--surface);
+    --score-pill-text-a: var(--fg);
+    --score-pill-text-b: var(--fg);
+  }
+
   .theme-amoled {
     --team-a: #1da1f2;
     --team-b: #3b82f6;
@@ -61,8 +146,6 @@
     --surface: #111111;
     --fg: #ffffff;
     --border: #1f1f1f;
-
-    /* Layout Mapping: Black Screen, Dark Pill, Neon Text */
     --score-canvas-a: var(--bg);
     --score-canvas-b: var(--bg);
     --score-pill-a: var(--surface);
@@ -80,8 +163,6 @@
     --surface: #efe0c9;
     --fg: #2f241b;
     --border: #d4b28a;
-
-    /* Layout Mapping: Colored Screen, Surface Pill, Dark Text */
     --score-canvas-a: var(--team-a);
     --score-canvas-b: var(--team-b);
     --score-pill-a: var(--surface);
