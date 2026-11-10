@@ -8,6 +8,11 @@ export function updateMetaTag(name: string, content: string) {
   meta.setAttribute("content", content);
 }
 
+export function updateRootBackgroundColor(color: string) {
+  document.documentElement.style.backgroundColor = color;
+  document.body.style.backgroundColor = color;
+}
+
 export function getCssVar(name: string): string {
   return getComputedStyle(document.documentElement)
     .getPropertyValue(name)
