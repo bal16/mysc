@@ -63,10 +63,10 @@ export const ScoreBox = ({
         <div
           className={clsx(
             "flex p-10 gap-10 shadow-2xl",
-            variant === "L" &&
-              "pl-10 rounded-l-full bg-score-pill-a text-score-pill-text-a",
-            variant === "R" &&
-              "pr-10 rounded-r-full bg-score-pill-b text-score-pill-text-b"
+            variant === "L" && "pl-10 rounded-l-full",
+            variant === "R" && "pr-10 rounded-r-full",
+            label === "A" && "bg-score-pill-a text-score-pill-text-a",
+            label === "B" && "bg-score-pill-b text-score-pill-text-b"
           )}
         >
           {variant == "L" && (

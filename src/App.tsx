@@ -34,9 +34,9 @@ function App() {
   const wakeLock = useWakeLock();
   const haptics = useHaptics();
   const pwaInstall = usePWAInstall();
-  const { setTheme } = useTheme();
+  const { resetTheme } = useTheme();
   const resetPreferences = useResetPreferences({
-    setTheme,
+    resetTheme,
     wakeLock,
     haptics,
     onShowOnboarding: () => setShowOnboarding(true),
