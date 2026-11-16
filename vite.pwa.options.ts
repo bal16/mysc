@@ -16,6 +16,17 @@ export default {
     description:
       "A fast, simple badminton score counter for casual matches, short games, and easy scorekeeping on every device.",
     lang: "en",
+    dir: "ltr",
+    start_url: "/",
+    scope: "/",
+    display: "standalone",
+    orientation: "landscape",
+    // theme_color & background_color are static defaults (used for install splash screen).
+    // Runtime values are updated dynamically via <meta> tags in ThemeProvider.
+    theme_color: "#1DA1F2",
+    background_color: "#FDF6E3",
+    categories: ["sports", "utilities"],
+    prefer_related_applications: false,
     icons: [
       {
         src: "/android-chrome-192x192.png",
@@ -30,26 +41,17 @@ export default {
         purpose: "any",
       },
       {
-        purpose: "maskable",
-        sizes: "1024x1024",
-        src: "/maskable_icon.png",
+        src: "/maskable_icon_x512.png",
+        sizes: "512x512",
         type: "image/png",
+        purpose: "maskable",
       },
       {
-        purpose: "maskable",
-        sizes: "512x512",
-        src: "/maskable_icon_x512.png",
+        src: "/maskable_icon.png",
+        sizes: "1024x1024",
         type: "image/png",
+        purpose: "maskable",
       },
     ],
-    // theme_color & background_color are static defaults (used for install splash screen).
-    // Runtime values are updated dynamically via <meta> tags in ThemeProvider.
-    theme_color: "#1DA1F2",
-    background_color: "#FDF6E3",
-    display: "standalone",
-    scope: "/",
-    start_url: "/",
-    orientation: "landscape",
-    categories: ["games"],
   },
 } as Partial<VitePWAOptions>;
