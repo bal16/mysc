@@ -53,5 +53,35 @@ export default {
         purpose: "maskable",
       },
     ],
+    screenshots: [
+      {
+        src: "/screenshots/theme-1.webp",
+        sizes: "1972x1109",
+        type: "image/webp",
+        form_factor: "wide",
+        label: "Badminton score counter in landscape mode (theme 1)",
+      },
+      {
+        src: "/screenshots/theme-2.webp",
+        sizes: "1972x1109",
+        type: "image/webp",
+        form_factor: "wide",
+        label: "Badminton score counter in landscape mode (theme 2)",
+      },
+      {
+        src: "/screenshots/theme-3.webp",
+        sizes: "1972x1109",
+        type: "image/webp",
+        form_factor: "wide",
+        label: "Badminton score counter in landscape mode (theme 3)",
+      },
+      {
+        src: "/screenshots/theme-4.webp",
+        sizes: "1972x1109",
+        type: "image/webp",
+        form_factor: "wide",
+        label: "Badminton score counter in landscape mode (theme 4)",
+      },
+    ],
   },
 } as Partial<VitePWAOptions>;
