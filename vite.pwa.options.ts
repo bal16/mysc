@@ -20,6 +20,7 @@ export default {
     start_url: "/",
     scope: "/",
     display: "standalone",
+    display_override: ["standalone", "minimal-ui", "browser"],
     orientation: "landscape",
     // theme_color & background_color are static defaults (used for install splash screen).
     // Runtime values are updated dynamically via <meta> tags in ThemeProvider.
